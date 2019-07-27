@@ -50,6 +50,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
     w.Write(res)
 
     if (!vld.Match) {
+	fmt.Println("false")
 	return
     }
 
@@ -83,4 +84,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
     _, err = stmt.Query(newSSID, time.Now().String(), usr);
     checkErr(err)
+
+    fmt.Println("ok")
 }
