@@ -9,20 +9,22 @@
 </head>
 <body>
   
-<form action="/action_page.php" style="border:1px solid #ccc">
+<form style="border:1px solid #ccc;width:30%;margin:auto;background-color:lightgray;" action="" onsubmit="return requestSignIn()">
   <div class="container">
-    <h1 style="color:white;">Sign In</h1>
+    <h1 style="color:black;">Sign In</h1>
     
     <hr>
 
-    <label for="email" style="color:white;"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <label for="email" style="color:black;"><b>Email</b></label>
+    <input class="signin" type="email" placeholder="Enter Email" name="email" maxlength="50" required>
+    <p id="signInError" style="font-size:10px;color:red;margin-top:0px;text-align:right;"></p>
 
-    <label for="psw" style="color:white;"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="psw" style="color:black;"><b>Password</b></label>
+    <input class="signin" type="password" placeholder="Enter Password" name="psw" minlength="6" maxlength="30" required>
+    <p id="signInError" style="font-size:10px;color:red;margin-top:0px;text-align:right;"></p>
     
-    <label style="color:white;">
-      <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px;"> Remember me
+    <label style="color:black;">
+      <input class="signin" type="checkbox" checked="checked" name="remember" style="margin-bottom:15px;"> Remember me
     </label>
     
 
@@ -36,5 +38,29 @@
 <div class="footer">
   <h2>made by GET HIGH TEAM</h2>
 </div>
+<script src="requestor.js"></script>
+<script>
+  function requestSignIn() {
+    let signInData = document.getElementsByClassName("signin");
+    let signInObj = {
+      Username: signInData[0].value,
+      Password: signInData[1].value,
+      Remember: signInData[2].value
+    };
+    requestData(serverURL + "signin", JSON.stringify(signInObj), responseSignIn);
+    return false;
+  }
+  
+  function responseSignIn(responseText) {
+    let errorData = document.getElementById("signInError");
+    let isMatch = JSON.parse(responseText).Match;
+    if (!isMatch) {
+      errorData.innerHTML = "Incorrect email or password!";
+      return;
+    }
+    else errorData.innerHTML = "";
+    location.href = 'index.html';
+  }
+</script>
 </body>
 </html>
