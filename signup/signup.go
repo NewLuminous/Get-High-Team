@@ -72,7 +72,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
     	VALUES($1, $2, $3);`
     _, err = db.Exec(sqlStmt, usr, pwd, name)
     if err != nil {
-	fmt.Fprintln(w, err)
+	log.Fatal(err)
 	return
     }
     http.Redirect(w, r, "/home", http.StatusMovedPermanently)
