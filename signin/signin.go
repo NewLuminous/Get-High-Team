@@ -44,28 +44,21 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	log.Fatal(err)
 	return
     }
-
     w.Header().Set("Access-Control-Allow-Origin", "*")
-    w.Header().Set("content-type", "application/json")
-    w.Write(res)
 
     if (!vld.Match) {
 	fmt.Println("false")
+	w.Write(res)
 	return
     }
 
     //Generate SSID and SetCookie
     newSSID := session.GenerateSSID()
-    var cookie1, cookie2 http.Cookie
-    if data.Rem {
-	cookie1 = http.Cookie{Name: "SSID", Value: newSSID}
-	cookie2 = http.Cookie{Name: "usr", Value: usr}
-    } else {
-	cookie1= http.Cookie{Name: "SSID", Value: newSSID, Expires: time.Now().Add(365*24*time.Hour)}
-	cookie2 = http.Cookie{Name: "usr", Value: usr}
-    }
-    http.SetCookie(w, &cookie1)
-    http.SetCookie(w, &cookie2)
+
+    cookie := http.Cookie{Name: "SSID", Value: newSSID, Expires: time.Now().Add(365*24*time.Hour)}
+    http.SetCookie(w, &cookie)
+
+    w.Write(res)
 
     //Save the SSID to DB
     db, err := config.InitDB()
