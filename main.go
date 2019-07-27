@@ -7,11 +7,16 @@ import (
     "time"
     "log"
     "github.com/Get-High-Team/signup"
+    "github.com/Get-High-Team/signin"
 )
 
 func customHandler(w http.ResponseWriter, r *http.Request) {
      if (r.URL.Path == "/signup") {
 	signup.Handler(w, r)
+	return
+     }
+     if (r.URL.Path == "/signin") {
+	signin.Handler(w, r)
 	return
      }
 }
