@@ -9,36 +9,76 @@
 </head>
 <body>
   
-<form action="/action_page.php" style="border:1px solid #ccc">
+<form style="border:1px solid #ccc;width:30%;margin:auto;background-color:lightgray;" action="" onsubmit="return requestSignUp()">
   <div class="container">
-    <h1 style="color:white;">Sign Up</h1>
-    <p style="color:white;">Please fill in this form to create an account.</p>
+    <h1 style="color:black;">Sign Up</h1>
+    <p style="color:black;">Please fill in this form to create an account.</p>
     <hr>
 
-    <label for="email" style="color:white;"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" required>
+    <label for="email" style="color:black;"><b>Email</b></label>
+    <input class="signUp" type="email" placeholder="Enter Email" name="email" maxlength="50" required>
+    <p class="signUpError"></p>
 
-    <label for="psw" style="color:white;"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <label for="psw" style="color:black;"><b>Password</b></label>
+    <input class="signUp" type="password" placeholder="Enter Password" name="psw" minlength="6" maxlength="30" required>
+    <p class="signUpError"></p>
 
-    <label for="name" style="color:white;"><b>Name</b></label>
-    <input type="text" placeholder="Name" name="name" required>
+    <label for="name" style="color:black;"><b>Name</b></label>
+    <input class="signUp" type="text" placeholder="Name" name="name" maxlength="50" required>
+    <p class="signUpError"></p>
     
-    <label style="color:white;">
-      <input type="checkbox" checked="checked" name="license" style="margin-bottom:15px;"> Tôi chấp nhận các điều khoản
+    <label style="color:black;">
+      <input type="checkbox" checked="checked" name="license" style="margin-bottom:15px;"> I agree to the Terms of Service and Privacy Policy.
     </label>
-    
-
 
     <div class="clearfix">
-
       <button type="submit" class="signupbtn">Sign Up</button>
-      <button type="submit" class="loginbtn">Log In</button>
     </div>
   </div>
 </form>
 <div class="footer">
   <h2>made by GET HIGH TEAM</h2>
 </div>
+<script defer src="requestor.js"></script>
+<script defer src="validator.js"></script>
+<script defer>
+  function requestSignUp() {
+    let signUpData = document.getElementsByClassName("signUp");
+    let signUpObj = {
+      Username: signUpData[0].value,
+      Password: signUpData[1].value,
+      Name: signUpData[2].value
+    };
+    requestData(serverURL + "signup", JSON.stringify(signUpObj), responseSignUp);
+    return false;
+  }
+  
+  function responseSignUp(responseText) {
+    let errorData = document.getElementsByClassName("signUpError");
+    let responseObj = JSON.parse(responseText);
+    switch (responseObj.Usr) {
+      case "duplicated": 
+        errorData[0].innerHTML = "This email is already in use!";
+        return;
+      case "not valid":
+        errorData[0].innerHTML = "This email is not valid!";
+        return;
+      default: errorData[0].innerHTML = "";
+    }
+    switch (responseObj.Pwd) {
+      case "not valid":
+        errorData[1].innerHTML = "Password length must be between 6 and 30!";
+        return;
+      default: errorData[1].innerHTML = "";
+    }
+    switch (responseObj.Name) {
+      case "not valid":
+        errorData[2].innerHTML = "Name is not valid!";
+        return;
+      default: errorData[2].innerHTML = "";
+    }
+    location.href = 'index.html';
+  }
+</script>
 </body>
 </html>
