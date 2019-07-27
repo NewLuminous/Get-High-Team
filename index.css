@@ -51,6 +51,7 @@ body {
 .leftcolumn {   
   float: left;
   width: 75%;
+  overflow: auto;
 }
 
 /* Right column */
@@ -59,7 +60,6 @@ body {
   width: 25%;
   background-color: #f1f1f1;
   padding-left: 20px;
-  overflow-y: auto;
 }
 
 /* Fake image */
@@ -117,3 +117,26 @@ select {
     width: 100%;
   }
 }
+
+/* Pagination links */
+.pagination {
+  margin: auto;
+  display: table;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+/* Style the active/current link */
+.pagination #active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Add a grey background color on mouse-over */
+.pagination a:hover:not(.active) {background-color: #ddd;}
