@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!--  Meta  -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>New Post</title>
+
+    <!--  Styles  -->
+    <link rel="stylesheet" href="newpost.css">
+</head>
+<body>
+    <div class="header">
+        <h1>Hostel</h1>
+        <p>Rent</p>
+    </div>
+
+    <div class="topnav">
+        <a href="index.html">Home</a>
+        <a href="newpost.html">New Post</a>
+        <a href="signin.html" style="float:right">Log in</a>
+        <a href="signup.html" style="float:right">Sign up</a>
+    </div>
+
+    <div class="row">
+        <div class="leftcolumn">
+            <div class="card">
+                <form action="/action_page.php">
+                    <label for="fname">First Name</label>
+                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+                    <label for="lname">Last Name</label>
+                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+
+                    <label for="owneraddress">Owner's Address</label>
+                    <input type="text" id="owneraddress" name="owneraddress" placeholder="Address..">
+
+                    <label for="city">Hostel City</label>
+                    <select id="city" name="city">
+                        <option value="hanoi">Hanoi</option>
+                        <option value="danang">Da Nang</option>
+                        <option value="hochiminh">Ho Chi Minh</option>
+                    </select>
+
+                    <label for="district">Hostel District</label>
+                    <select id="district" name="district">
+                    </select>
+
+                    <label for="street">Hostel Street</label>
+                    <select id="street" name="street">
+                    </select>
+
+                    <label for="area">Hostel Area</label>
+                    <input type="number" id="area" name="area" placeholder="Area..." />
+
+                    <label for="maxpeople">Max People</label>
+                    <input type="text" id="maxpeople" name="maxpeople" placeholder="Number of people..." />
+
+                    <label class="container">
+                        <input type="checkbox"> Inside Bathroom
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <label for="description" style="padding-top:10px; padding-bottom:10px; ">More Description</label>
+                    <textarea id="description" name="description" placeholder="Write something.." style="height:200px; overflow:auto" class="desBox">
+
+                    </textarea>
+
+                    <label style="display:block;">Image 1:</label>
+                    <input type='file' onchange="readURL(this);" />
+                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+
+                    <label style="display:block;">Image 2:</label>
+                    <input type='file' onchange="readURL(this);" />
+                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+
+                    <label style="display:block;">Image 3:</label>
+                    <input type='file' onchange="readURL(this);" />
+                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+
+                    <label style="display:block;">Image 4:</label>
+                    <input type='file' onchange="readURL(this);" />
+                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+
+                    <label style="display:block;">Image 5:</label>
+                    <input type='file' onchange="readURL(this);" />
+                    <img id="blah" src="http://placehold.it/180" alt="your image" style="display:block; margin-bottom:10px;" />
+
+                    <label for="phone">Phone Number: </label>
+                    <input type="tel" id="phone" name="phone" placeholder="Your phone number...">
+
+                    <label for="ursemail">Email: </label>
+                    <input type="email" id="ursemail" name="ursemail" placeholder="Your email...">
+
+
+                    <input type="submit" value="Rent your house">
+                </form>
+            </div>
+            
+            
+            
+        </div>
+        
+    </div>
+
+    <div class="footer">
+        <h2>made by GET HIGH TEAM</h2>
+    </div>
+    <script src="newpost.js"></script>
+</body>
+</html>
