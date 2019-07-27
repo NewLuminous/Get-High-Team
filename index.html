@@ -9,8 +9,17 @@
   
   <!--  Styles  -->
   <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+        body, h1, h2, h3, h4, h5, h6 {
+            font-family: "Raleway", Arial, Helvetica, sans-serif
+        }
+        .mySlides {display: none}
+        </style>
 </head>
-<body>
+<body onload="checkSignIn()">
   <div class="header">
   <h1>Hostel</h1>
   <h2>Rent</h2>
@@ -18,8 +27,8 @@
 
 <div class="topnav">
   <a href="#">Home</a>
-  <a href="newpost.html">New Post</a>
-  <a href="signin.html" style="float:right">Log in</a>
+  <a href="#">New post</a>
+  <a href="signin.html" style="float:right">Sign in</a>
   <a href="signup.html" style="float:right">Sign up</a>
 </div>
 
@@ -53,6 +62,60 @@
       <p>Some text..</p>
       <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
     </div>
+    <div class="card">
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <div class="fakeimg" style="height:200px;">Image</div>
+      <h2>TITLE HEADING</h2>
+      <h5>Title description, Sep 2, 2017</h5>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+    </div>
+    <div class="card">
+      <div class="pagination">
+        <a class="pages">&laquo;</a>
+        <a class="pages" id="active" onclick="changePage(this)">1</a>
+        <a class="pages" onclick="changePage(this)">2</a>
+        <a class="pages" onclick="changePage(this)">3</a>
+        <a class="pages" onclick="changePage(this)">4</a>
+        <a class="pages" onclick="changePage(this)">5</a>
+        <a class="pages" onclick="changePage(this)">6</a>
+        <a class="pages" onclick="nextPage()">&raquo;</a>
+      </div>
+  </div>
   </div>
   <div class="rightcolumn">
     <div class="card" style="height:1000px">
@@ -87,6 +150,31 @@
 <div class="footer">
   <h2>made by GET HIGH TEAM</h2>
 </div>
-  <script src="index.js"></script>
+  <script src="requestor.js"></script>
+  <script src="loader.js"></script>
+  <script>
+    function leaveCurrentPage() {
+      let currentPage = document.getElementById("active");
+      currentPage.id = "";
+      return parseInt(currentPage.innerHTML);
+    }
+    
+    function lastPageNum() {
+      let pages = document.getElementsByClassName("pages");
+      return parseInt(pages[pages.length - 2].innerHTML);
+    }
+  
+    function changePage(pageEle) {
+      leaveCurrentPage();
+      pageEle.id = "active";
+    }
+    
+    function nextPage() {
+      let currentPageNum = leaveCurrentPage();
+      alert(lastPageNum());
+      let pages = document.getElementsByClassName("pages");
+      pages[currentPageNum + 1].id = "active";
+    }
+  </script>
 </body>
 </html>
