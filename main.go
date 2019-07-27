@@ -6,7 +6,7 @@ import (
     "net/http"
     "time"
     "log"
-    "signup"
+    "github.com/Get-High-Team/signup"
 )
 
 func customHandler(w http.ResponseWriter, r *http.Request) {
