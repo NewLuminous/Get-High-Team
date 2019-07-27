@@ -24,7 +24,7 @@ func countRow(rows *sql.Rows) (ans int) {
 }
 
 func validateUsername(user string) string {
-    if m, _ := regexp.MatchString("[a-zA-Z0-9._]+[@][a-z0-9-]+[.][a-z0-9.]+", user); !m {
+    if m, _ := regexp.MatchString("^[a-zA-Z0-9._]+[@][a-z0-9-]+[.][a-z0-9.]+$", user); !m {
 	return "not valid"
     }
 
@@ -48,14 +48,14 @@ func validateUsername(user string) string {
 }
 
 func validatePassword(pwd string) string {
-    if len(pwd) < 6 || len(pwd) > 20 {
+    if len(pwd) < 6 || len(pwd) > 30 {
 	return "not valid"
     }
     return "ok"
 }
 
 func validateName(name string) string {
-    if m, _ := regexp.MatchString("[a-zA-Z ]+", name); !m {
+    if m, _ := regexp.MatchString("^[a-zA-Z][a-zA-Z ]+[a-zA-Z]$", name); !m {
 	return "not valid"
     }
     return "ok"
