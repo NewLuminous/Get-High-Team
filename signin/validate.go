@@ -2,6 +2,7 @@
 package signin
 
 import (
+//    "crypto/sha256"
     "database/sql"
     "log"
     "regexp"
@@ -24,10 +25,16 @@ func countRow(rows *sql.Rows) (ans int) {
 }
 
 func validate(user string, pwd string) bool {
+    //check syntax
     if !validateUsername(user) || !validatePassword(pwd) {
 	return false
     }
 
+    //encrypte password
+    //encryptedPwd := sha256.Sum256([]byte(pwd))
+    //pwd = string(encryptedPwd[:])
+
+    //compare to database
     db, err := config.InitDB()
     if err != nil {
 	log.Fatal("Cannot connect to Database", err)
