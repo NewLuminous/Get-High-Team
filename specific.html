@@ -18,7 +18,9 @@
         }
         .mySlides {display: none}
         </style>
-
+    <script>
+        var starRating;
+    </script>
         </head >
         <body onload="checkSignIn()">
         <div class="header" >
@@ -167,42 +169,45 @@
         
           <div class="card" >
               <div id="rating">
-                  <input type="radio" id="star5" name="rating" value="5" />
+                  <input type="radio" id="star5" name="rating" value="5" onclick="calcRate(this)"/>
                   <label class="full" for="star5" title="Awesome - 5 stars"></label>
 
-                  <input type="radio" id="star4" name="rating" value="4" />
+                  <input type="radio" id="star4" name="rating" value="4" onclick="calcRate(this)"/>
                   <label class="full" for="star4" title="Pretty good - 4 stars"></label>
 
-                  <input type="radio" id="star3" name="rating" value="3" />
+                  <input type="radio" id="star3" name="rating" value="3" onclick="calcRate(this)"/>
                   <label class="full" for="star3" title="Meh - 3 stars"></label>
 
-                  <input type="radio" id="star2" name="rating" value="2" />
+                  <input type="radio" id="star2" name="rating" value="2" onclick="calcRate(this)"/>
                   <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
 
-                  <input type="radio" id="star1" name="rating" value="1" />
+                  <input type="radio" id="star1" name="rating" value="1" onclick="calcRate(this)"/>
                   <label class="full" for="star1" title="Sucks big time - 1 star"></label>
               </div>
               <script>
-                  function calcRate(r) {
-                      const f = ~~r,
-                      id = 'star' + f + (r % f ? 'half' : '')
-                      id && (document.getElementById(id).checked = !0)
+                  function calcRate(caller) {
+                      
+                      starRating = caller.value;
                   }
               </script>
             
           </div >
             <div class="card" >
-                <form onsubmit="return getComment()">
+                <form onsubmit="return getUsrRating()">
                     <textarea class="rate" style="width:100%; height:100px; overflow:auto;" placeholder="Please give sincere comment..." > </textarea >
                     <button type="submit" class="submitbtn" style="display:block; margin:auto;">Submit</button>
                 </form>
             </div >
             <script>
-                function getComment() {
+                function getUsrRating() {
                     let commentData = document.getElementsByClassName("rate");
                     let commentObject = {
-                        Comment: commentData,
+                        Comment: commentData[0].value,
+                        Star: starRating
                     }
+                    alert(starRating);
+                    return false;
+                    
                 }
             </script>
 
