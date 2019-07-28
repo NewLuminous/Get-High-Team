@@ -30,11 +30,13 @@
     </div>
 
     <div class="topnav">
-        <a href="index.html">Home</a>
-        <a href="newpost.html">New Post</a>
-        <a href="signin.html" style="float:right">Sign in</a>
-        <a href="signup.html" style="float:right">Sign up</a>
-    </div>
+  <a href="index.html">Home</a>
+  <a href="newpost.html">New post</a>
+  <a href="signin.html" id="signin" style="float:right;">Sign in</a>
+  <a href="signup.html" id="signup" style="float:right;">Sign up</a>
+  <a href="index.html" id="signout" style="float:right; display:none;" onclick="requestSignOut()">Sign out</a>
+  <a id="welcome" style="float:right; display:none;">Welcome </a>
+</div>
 
     <div class="row">
         <div class="leftcolumn">
@@ -109,7 +111,17 @@
     <div class="footer">
         <h2>made by GET HIGH TEAM</h2>
     </div>
-    <script src="newpost.js"></script>
+    <script src="requestor.js"></script>
+    <script src="loader.js"></script>
+    <script>
+    function requestSignOut() {
+      requestData(serverURL + "signout", null, responseSignOut, "GET");
+    }
+    
+    function responseSignOut(responseText) {
+      checkSignIn();
+    }
+  </script>
     <script>
         function getInfo() {
             let infoData = document.getElementsByClassName("info");
