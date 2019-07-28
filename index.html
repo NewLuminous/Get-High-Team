@@ -166,12 +166,10 @@
   <script src="pageTurner.js"></script>
   <script>
     function requestSignOut() {
-      requestData(serverURL + "/signout", null, responseSignOut, "GET");
+      requestData(serverURL + "signout", null, responseSignOut, "GET");
     }
     
-    function responseSignOut(responseText) {
-      alert(responseText);
-    }
+    function responseSignOut(responseText) {}
   </script>
 </body>
 </html>
