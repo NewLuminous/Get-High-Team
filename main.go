@@ -5,6 +5,7 @@ import (
 	"github.com/Get-High-Team/APIs"
 	"github.com/Get-High-Team/config"
 	"github.com/Get-High-Team/signin"
+	"github.com/Get-High-Team/signout"
 	"github.com/Get-High-Team/signup"
 	"log"
 	"net/http"
@@ -19,6 +20,11 @@ func customHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	if r.URL.Path == "/signin" {
 		signin.Handler(w, r)
+		return
+	}
+	if r.URL.Path == "/signout" {
+
+		signout.Handler(w, r)
 		return
 	}
 

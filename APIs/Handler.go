@@ -27,7 +27,7 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 	if r.Method == "POST" {
-		apiName = strings.TrimPrefix(r.URL.Path, "/APIs/");
+		apiName = strings.TrimPrefix(r.URL.Path, "/APIs/")
 
 		switch apiName {
 		case "getIndexPost":
