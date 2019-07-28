@@ -3,6 +3,7 @@ function checkSignIn() {
 }
 
 function responseLoad(responseText) {
+  //alert(responseText);
   let signIn = document.getElementById("signin");
   let signUp = document.getElementById("signup");
   let signOut = document.getElementById("signout");
