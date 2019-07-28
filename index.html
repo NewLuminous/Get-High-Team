@@ -21,30 +21,13 @@
         .mySlides {display: none}
         </style>
 </head>
-<body>
+<body onload="checkSignIn(); checkPageNum();">
   <div class="header">
   <h1>Hostel</h1>
   <h2>Rent</h2>
 </div>
 
-<script src="requestor.js"></script>
-<script src="loader.js"></script>
-<script>
-    function requestSignOut() {
-      requestData(serverURL + "signout", null, responseSignOut, "GET");
-    }
-    
-    function responseSignOut(responseText) {
-      checkSignIn();
-    }
-    
-    function goToNewPost() {
-      let welcome = document.getElementById("welcome");
-      if (welcome.style.display == "none") return; else location.href = "newpost.html";
-    }
-</script>
-
-<div class="topnav" onload="checkSignIn();">
+<div class="topnav">
   <a href="index.html">Home</a>
   <a onclick="goToNewPost()">New post</a>
   <a href="signin.html" id="signin" style="float:right;">Sign in</a>
@@ -57,88 +40,85 @@
   <div class="leftcolumn">
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
     <div class="hostelPreview">
       <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <a href="#">TITLE HEADING</a>
       <h5></h5>
-      <p></p>
-      <p></p>
-      <p></p>
+      <p>Some text..</p>
+      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+      <p>Title description, Dec 7, 2017</p>
     </div>
-    
-    <script src="pageTurner.js"></script>
-    
-    <div class="card" onload="checkPageNum();">
+    <div class="card">
       <div class="pagination">
         <a class="pages" onclick="goToPrevPage()">&laquo;</a>
         <a class="pages" id="active" onclick="changePage(this)">1</a>
@@ -181,5 +161,22 @@
 <div class="footer">
   <h2>made by GET HIGH TEAM</h2>
 </div>
+  <script src="requestor.js"></script>
+  <script src="loader.js"></script>
+  <script src="pageTurner.js"></script>
+  <script>
+    function requestSignOut() {
+      requestData(serverURL + "signout", null, responseSignOut, "GET");
+    }
+    
+    function responseSignOut(responseText) {
+      checkSignIn();
+    }
+    
+    function goToNewPost() {
+      let welcome = document.getElementById("welcome");
+      if (welcome.style.display == "none") return; else location.href = "newpost.html";
+    }
+  </script>
 </body>
 </html>
