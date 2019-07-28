@@ -71,7 +71,7 @@
                     <input class="info" type="text" id="maxpeople" name="maxpeople" placeholder="Number of people..." />
 
                     <label class="container">
-                        <input class="info" type="checkbox"> Inside Bathroom
+                        <input class="info" type="checkbox"> Live With Owner
                         <span class="checkmark"></span>
                     </label>
 
@@ -80,27 +80,13 @@
 
                     </textarea>
 
-                    <label style="display:block;">Image 1:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
 
 
-                    <label style="display:block;">Image 2:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
+
+                    
 
 
-                    <label style="display:block;">Image 3:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
-
-
-                    <label style="display:block;">Image 4:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
-
-
-                    <label style="display:block;">Image 5:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
-
-
-                    <label for="phone">Phone Number: </label>
+                    <label style="display:block;" for="phone">Phone Number: </label>
                     <input class="info" type="tel" id="phone" name="phone" placeholder="Your phone number...">
 
                     <label for="ursemail">Email: </label>
@@ -135,22 +121,23 @@
                 District: infoData[4].value,
                 Street: infoData[5].value,
                 Area: infoData[6].value,
-                maxPeople: infoData[7].value,
-                insideBathroom: infoData[8].checked,
+                MaxPeople: infoData[7].value,
+                LiveWithOwner: infoData[8].checked,
                 Description: infoData[9].value,
-                Image1: infoData[10].files[0],
-                Image2: infoData[11].files[0],
-                Image3: infoData[12].files[0],
-                Image4: infoData[13].files[0],
-                Image5: infoData[14].files[0],
-                phone: infoData[15].value,
-                email: infoData[16].value,
+                
+                Phone: infoData[10].value,
+                Email: infoData[11].value
             
 
             }
+            requestData(serverURL + "newpost", JSON.stringify(infoObj), responseInfo, "POST");
             
             return false;
 
+        }
+
+        function responseInfo(responseText) {
+            alert(responseInfo);
         }
     </script>
 </body>
