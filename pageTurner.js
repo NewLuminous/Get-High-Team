@@ -32,14 +32,6 @@ function getFirstPageNum() {
       currentPage.id = "";
       return parseInt(currentPage.innerHTML);
     }
-
-function getInfo(info) {
-  let posLeft = location.href.indexOf(info);
-  if (posLeft < 0) return "1";
-  let posRight = location.href.indexOf("&", posLeft);
-  if (posRight < 0) return location.href.substring(posLeft + info.length + 1);
-  return location.href.subtring(posLeft + info.length + 1, posRight);
-}
     
 function activatePage(num) {
   if (num == 0) num = getCurrentPage();
@@ -66,8 +58,8 @@ function responsePage(responseText) {
     contents[3].innerHTML = "Area: " + hostels.Data[i].Area + " m2";
     contents[4].innerHTML = "Address: " + hostels.Data[i].Address;
     contents[5].innerHTML = "Last update: " + hostels.Data[i].Date;
-    //contents[6].innerHTML = hostels.Data[i].Id;
-    contents[6].innerHTML = 7;
+    contents[6].innerHTML = hostels.Data[i].Id;
+    //contents[6].innerHTML = 7;
     previews[i].style.display = "block";
   }
   for (let i = hostels.Data.length; i <= 10; ++i) {

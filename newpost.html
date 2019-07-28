@@ -29,11 +29,11 @@
         <h2>Rent</h2>
     </div>
 
-    <div class="topnav">
+<div class="topnav">
   <a href="index.html">Home</a>
-  <a href="newpost.html">New post</a>
-  <a href="signin.html" id="signin" style="float:right;">Sign in</a>
-  <a href="signup.html" id="signup" style="float:right;">Sign up</a>
+  <a onclick="goToNewPost()">New post</a>
+  <a href="signin.html" id="signin" style="float:right; display:none;">Sign in</a>
+  <a href="signup.html" id="signup" style="float:right; display:none;">Sign up</a>
   <a href="index.html" id="signout" style="float:right; display:none;" onclick="requestSignOut()">Sign out</a>
   <a id="welcome" style="float:right; display:none;">Welcome </a>
 </div>
@@ -155,9 +155,16 @@
             return false;
 
         }
+        
+        function goToNewPost() {
+      let welcome = document.getElementById("welcome");
+
+      location.href = (welcome.style.display == "none") ? "signin.html" : "newpost.html";
+    }
 
         function responseInfo(responseText) {
-            alert(responseInfo);
+            //alert(responseInfo);
+            location.href = "index.html";
         }
     </script>
 </body>
