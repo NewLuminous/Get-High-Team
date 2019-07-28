@@ -8,14 +8,14 @@ import (
 
 func checkErr(err error) {
     if err != nil {
-	log.Fatal(err)
+	log.Println(err)
     }
 }
 
 func delSession(ssid string) {
     db, err := config.InitDB()
     if err != nil {
-	log.Fatal("Cannot connect to Database", err)
+	log.Println("Cannot connect to Database", err)
     }
     defer db.Close()
 

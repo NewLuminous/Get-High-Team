@@ -1,25 +1,16 @@
 package signup
 
 import (
-	"database/sql"
 	"github.com/Get-High-Team/config"
+	sqlFunc "github.com/Get-High-Team/func/sql"
 	"log"
 	"regexp"
 )
 
 func checkErr(err error) {
 	if err != nil {
-		log.Fatal(err)
+		log.Println(err)
 	}
-}
-func countRow(rows *sql.Rows) (ans int) {
-	for rows.Next() {
-		err := rows.Scan(&ans)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-	return ans
 }
 
 func validateUsername(user string) string {
@@ -29,7 +20,7 @@ func validateUsername(user string) string {
 
 	db, err := config.InitDB()
 	if err != nil {
-		log.Fatal("Cannot connect to Database", err)
+		log.Println("Cannot connect to Database", err)
 	}
 	defer db.Close()
 
@@ -39,7 +30,7 @@ func validateUsername(user string) string {
 	rows, err := stmt.Query(user)
 	checkErr(err)
 
-	if countRow(rows) != 0 {
+	if sqlFunc.CountRow(rows) != 0 {
 		return "duplicated"
 	}
 
