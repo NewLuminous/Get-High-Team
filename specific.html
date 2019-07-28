@@ -22,18 +22,20 @@
         var starRating;
     </script>
         </head >
-        <body onload="checkSignIn()">
+        <body onload="checkSignIn(); requestId();">
         <div class="header" >
         <h1 > Hostel</h1 >
         <h2 > Rent</h2 >
         </div >
 
-        <div class="topnav" >
-        <a href="index.html" > Home</a >
-        <a href="#" > New post</a >
-        <a href="signin.html" style="float:right" > Sign in</a >
-        <a href="signup.html" style="float:right" > Sign up</a >
-        </div >
+        <div class="topnav">
+  <a href="index.html">Home</a>
+  <a onclick="goToNewPost()">New post</a>
+  <a href="signin.html" id="signin" style="float:right; display:none;">Sign in</a>
+  <a href="signup.html" id="signup" style="float:right; display:none;">Sign up</a>
+  <a href="index.html" id="signout" style="float:right; display:none;" onclick="requestSignOut()">Sign out</a>
+  <a id="welcome" style="float:right; display:none;">Welcome </a>
+</div>
 
         <div class="row" >
         <div class="leftcolumn" >
@@ -46,7 +48,7 @@
 
                     <!-- Slideshow Header -->
                     <div class="w3-container" id="apartment">
-                        <h2 class="w3-text-green">The Apartment</h2>
+                        <h2 id="title" class="w3-text-green">The Apartment</h2>
                         <div class="w3-display-container mySlides">
                             <img src="image/livingroom.jpg" style="width:100%;margin-bottom:-6px">
                             <div class="w3-display-bottomleft w3-container w3-black">
@@ -91,8 +93,8 @@
                         <h4><strong>The space</strong></h4>
                         <div class="w3-row w3-large">
                             <div class="w3-col s6">
-                                <p><i class="fa fa-fw fa-male"></i> Max people: 4</p>
-                                <p><i class="fa fa-fw fa-bath"></i> Bathroom: Exist</p>
+                                <p id="liveWithOwner"><i class="fa fa-fw fa-male"></i> Address</p>
+                                <p id="area"><i class="fa fa-fw fa-bath"></i> Area</p>
                                 
                             </div>
  
@@ -101,9 +103,12 @@
 
                    
 
-                        <h4><strong>Extra Info</strong></h4>
-                        <p>Our apartment is really clean and we like to keep it that way. Enjoy the lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                        <h4 id="price">Details<strong></strong></h4>
+                        <p id="description">Our apartment is really clean and we like to keep it that way. Enjoy the lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
+                        <p id="address">Address</p>
+                        <p id="phone">Phone</p>
+                        <p id="email">Email</p>
                         <hr>
 
                     </div>
@@ -219,5 +224,49 @@
         </div >
         <script src="requestor.js"></script>
         <script src="loader.js"></script>
+        <script src="extractor.js"></script>
+        <script>
+    function requestSignOut() {
+      requestData(serverURL + "signout", null, responseSignOut, "GET");
+    }
+    
+    function responseSignOut(responseText) {
+      checkSignIn();
+    }
+    
+    function requestId() {
+      let hostelObj = {
+        PostId: parseInt(getInfo("id"))
+      }
+      requestData(serverURL + "APIs/getPost", JSON.stringify(hostelObj), responseId, "POST");
+      //requestData(serverURL + "post?id=" + getInfo("id"), null, responseId, "GET");
+    }
+    
+    function responseId(responseText) {
+      let responseObj = JSON.parse(responseText);
+      let title = document.getElementById("title");
+      title.innerHTML = responseObj.Title;
+      let price = document.getElementById("price");
+      price.innerHTML = responseObj.Price + " VND/month";
+      let lwo = document.getElementById("liveWithOwner");
+      if (responseObj.LiveWithOwner) lwo.innerHTML = "Live with owner"; else lwo.innerHTML = "No live with owner";
+      let area = document.getElementById("area");
+      area.innerHTML = "Area: " + responseObj.Area + " m2";
+      let address = document.getElementById("address");
+      address.innerHTML = "Address: " + responseObj.Street + ", " + responseObj.District + ", " + responseObj.City;
+      let description = document.getElementById("description");
+      description.innerHTML = responseObj.Description + "<br/>" + description.innerHTML;
+      let phone = document.getElementById("phone");
+      phone.innerHTML = "Phone: " + responseObj.Phone;
+      let email = document.getElementById("email");
+      email.innerHTML = "Email: " + responseObj.Email;
+    }
+    
+    function goToNewPost() {
+      let welcome = document.getElementById("welcome");
+
+      location.href = (welcome.style.display == "none") ? "signin.html" : "newpost.html";
+    }
+  </script>
         </body >
         </html >
