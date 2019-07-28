@@ -16,4 +16,6 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	session.DelCookie(w, r, "SSID")
+
+	log.Println("signed out")
 }
