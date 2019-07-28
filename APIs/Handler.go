@@ -32,6 +32,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		switch apiName {
 		case "getIndexPost":
 			getIndexPost(w, r)
+		case "getPost":
+			getPost(w, r)
 		}
 	}
 

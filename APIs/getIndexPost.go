@@ -14,6 +14,7 @@ type DataClient struct {
 }
 
 type DataRespond struct {
+	Id	int	`json:"Id"`
 	Title   string `json:"Title`
 	Date    string `json:"Date"`
 	Price   int64  `json:"Price"`
@@ -41,10 +42,11 @@ func getIndexPost(w http.ResponseWriter, r *http.Request) {
 	defer db.Close()
 
 	stmt, err := db.Prepare(`
-	    SELECT title, date, price, area, city, district, street, address 
+	    SELECT hostel.id, title, date, price, area, city, district, street, address 
 	    FROM hostel 
 	    INNER JOIN hostellocation 
 	    ON (hostel.locationId = hostellocation.id)
+	    ORDER BY hostel.id DESC
 	    LIMIT $1
 	    OFFSET $2;
 	`)
@@ -62,7 +64,7 @@ func getIndexPost(w http.ResponseWriter, r *http.Request) {
 			street   string
 			address  string
 		)
-		err = rows.Scan(&datagram.Title, &datagram.Date, &datagram.Price, &datagram.Area, &city, &district, &street, &address)
+		err = rows.Scan(&datagram.Id, &datagram.Title, &datagram.Date, &datagram.Price, &datagram.Area, &city, &district, &street, &address)
 		datagram.Address = address + ", " + street + ", " + district + ", " + city
 		datagram.Image = ""
 		dataSlice.Data = append(dataSlice.Data, datagram)
