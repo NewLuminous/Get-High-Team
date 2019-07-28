@@ -3,10 +3,13 @@ package main
 import (
 	"fmt"
 	"github.com/Get-High-Team/APIs"
+	"github.com/Get-High-Team/config"
 	"github.com/Get-High-Team/signin"
+	"github.com/Get-High-Team/signout"
 	"github.com/Get-High-Team/signup"
 	"log"
 	"net/http"
+	"strings"
 	"time"
 )
 
@@ -19,13 +22,18 @@ func customHandler(w http.ResponseWriter, r *http.Request) {
 		signin.Handler(w, r)
 		return
 	}
+	if r.URL.Path == "/signout" {
 
-	if r.URL.Path == "/APIs" {
+		signout.Handler(w, r)
+		return
+	}
+
+	if strings.HasPrefix(r.URL.Path, "/APIs") {
 		APIs.Handler(w, r)
 		return
 	}
 
-	http.ServeFile(w, r, "/home/hieutm211/workspace/go/src/github.com/Get-High-Team/" + r.URL.Path)
+	http.ServeFile(w, r, config.Path+r.URL.Path)
 }
 
 func main() {

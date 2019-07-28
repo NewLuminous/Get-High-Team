@@ -6,38 +6,26 @@ import (
 	"net/http"
 )
 
-func checkErr(err error) {
-	if err != nil {
-		log.Println(err)
-	}
-}
-
 func getUser(w http.ResponseWriter, r *http.Request) {
+	ssid := getSSID(r)
+
+	db, err := config.InitDB()
+	if err != nil {
+		log.Println("Cannot connect to Database", err)
+	}
+	defer db.Close()
+
+	stmt, err := db.Prepare(`SELECT name FROM users WHERE ssid = $1; `)
+	checkErr(err)
+
+	rows, err := stmt.Query(ssid)
+	checkErr(err)
+
 	username := ""
-
-	for _, cookie := range r.Cookies() {
-
-		if cookie.Name == "SSID" {
-			ssid := cookie.Value
-
-			db, err := config.InitDB()
-			if err != nil {
-				log.Fatal("Cannot connect to Database", err)
-			}
-			defer db.Close()
-
-			stmt, err := db.Prepare(`SELECT name FROM users WHERE ssid = $1; `)
-			checkErr(err)
-
-			rows, err := stmt.Query(ssid)
-			checkErr(err)
-
-			for rows.Next() {
-				err := rows.Scan(&username)
-				if err != nil {
-					log.Println(err)
-				}
-			}
+	for rows.Next() {
+		err := rows.Scan(&username)
+		if err != nil {
+			log.Println(err)
 		}
 	}
 	w.Header().Set("Access-Control-Allow-Origin", "*")
