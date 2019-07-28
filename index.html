@@ -21,34 +21,17 @@
         .mySlides {display: none}
         </style>
 </head>
-<body>
+<body onload="checkSignIn(); checkPageNum();">
   <div class="header">
   <h1>Hostel</h1>
   <h2>Rent</h2>
 </div>
 
-<script src="requestor.js"></script>
-<script src="loader.js"></script>
-<script>
-    function requestSignOut() {
-      requestData(serverURL + "signout", null, responseSignOut, "GET");
-    }
-    
-    function responseSignOut(responseText) {
-      checkSignIn();
-    }
-    
-    function goToNewPost() {
-      let welcome = document.getElementById("welcome");
-      if (welcome.style.display == "none") return; else location.href = "newpost.html";
-    }
-</script>
-
-<div class="topnav" onload="checkSignIn();">
+<div class="topnav">
   <a href="index.html">Home</a>
   <a onclick="goToNewPost()">New post</a>
-  <a href="signin.html" id="signin" style="float:right;">Sign in</a>
-  <a href="signup.html" id="signup" style="float:right;">Sign up</a>
+  <a href="signin.html" id="signin" style="float:right; display:none;">Sign in</a>
+  <a href="signup.html" id="signup" style="float:right; display:none;">Sign up</a>
   <a href="index.html" id="signout" style="float:right; display:none;" onclick="requestSignOut()">Sign out</a>
   <a id="welcome" style="float:right; display:none;">Welcome </a>
 </div>
@@ -56,89 +39,96 @@
 <div class="row">
   <div class="leftcolumn">
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://media.cntraveler.com/photos/53da60a46dec627b149e66f4/4:3/w_420,c_limit/hilton-moorea-lagoon-resort-spa-moorea-french-poly--110160-1.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://assets.traveltriangle.com/blog/wp-content/uploads/2015/09/palazzo-versace-queensland.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://irisholidays.com/keralatourism/wp-content/uploads/2013/07/mountain-club-resort-munnar.gif)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://www.wonderslist.com/wp-content/uploads/2012/09/roman-baths.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://i.ytimg.com/vi/BfdCifGDfSI/hqdefault.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://top10hoian.net/wp-content/uploads/2018/10/26.Top-10-Villa-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-t%E1%BA%A1i-H%E1%BB%99i-An.1.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(http://thuevilla.com/wp-content/uploads/2018/03/d25cb572af0b43551a1a.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://clickladi.cdn.vccloud.vn/wp-content/uploads/2019/07/G2-26.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://r-ec.bstatic.com/images/hotel/max1280x900/525/52506990.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#"></a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://travel.home.sndimg.com/content/dam/images/travel/fullset/2015/01/09ET/britains-top-castles-windsor-bershire-england.jpg.rend.hgtvcom.581.436.suffix/1491581062554.jpeg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
       <p></p>
       <p></p>
       <p></p>
+      <p style="display:none;"></p>
     </div>
-    
-    <script src="pageTurner.js"></script>
-    
-    <div class="card" onload="checkPageNum();">
+    <div class="card">
       <div class="pagination">
         <a class="pages" onclick="goToPrevPage()">&laquo;</a>
         <a class="pages" id="active" onclick="changePage(this)">1</a>
@@ -181,5 +171,27 @@
 <div class="footer">
   <h2>made by GET HIGH TEAM</h2>
 </div>
+  <script src="requestor.js"></script>
+  <script src="loader.js"></script>
+  <script src="pageTurner.js"></script>
+  <script>
+    function requestSignOut() {
+      requestData(serverURL + "signout", null, responseSignOut, "GET");
+    }
+    
+    function responseSignOut(responseText) {
+      checkSignIn();
+    }
+    
+    function goToNewPost() {
+      let welcome = document.getElementById("welcome");
+      location.href = (welcome.style.display == "none") ? "signin.html" : "newpost.html";
+    }
+    
+    function goToSpec(ele) {
+      let contents = ele.parentElement.getElementsByTagName("*");
+      location.href = "specific.html" + "?id=" + contents[6].innerHTML;
+    }
+  </script>
 </body>
 </html>
