@@ -23,61 +23,70 @@ type Validation struct {
 }
 
 func Handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Println("signup")
-	bodyReq, _ := ioutil.ReadAll(r.Body)
-
-	var data ClientData
-	err := json.Unmarshal(bodyReq, &data)
-	if err != nil {
-		log.Fatal(err)
+	if r.Method == "GET" {
+		http.ServeFile(w, r, config.Path+"/signup.html")
 		return
 	}
 
-	usr := data.Usr
-	pwd := data.Pwd
-	name := data.Name
+	if r.Method == "POST" {
+		fmt.Println("\nsignup")
 
-	fmt.Println(string(bodyReq))
-	fmt.Println(usr)
-	fmt.Println(pwd)
-	fmt.Println(name)
+		bodyReq, _ := ioutil.ReadAll(r.Body)
 
-	var vld Validation
-	vld.Usr = validateUsername(usr)
-	vld.Pwd = validatePassword(pwd)
-	vld.Name = validateName(name)
+		var data ClientData
+		err := json.Unmarshal(bodyReq, &data)
+		if err != nil {
+			log.Println(err)
+			return
+		}
 
-	res, err := json.Marshal(vld)
-	if err != nil {
-		log.Fatal(err)
-		return
-	}
+		usr := data.Usr
+		pwd := data.Pwd
+		name := data.Name
 
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	w.Header().Set("content-type", "application/json")
-	w.Write(res)
+		fmt.Println(string(bodyReq))
+		fmt.Println(usr)
+		fmt.Println(pwd)
+		fmt.Println(name)
 
-	if vld.Usr != "ok" || vld.Pwd != "ok" || vld.Name != "ok" {
-		return
-	}
+		var vld Validation
+		vld.Usr = validateUsername(usr)
+		vld.Pwd = validatePassword(pwd)
+		vld.Name = validateName(name)
 
-	//encrypt password
-	//encryptedPwd := sha256.Sum256([]byte(pwd))
-	//pwd = string(encryptedPwd[:])
+		res, err := json.Marshal(vld)
+		if err != nil {
+			log.Println(err)
+			return
+		}
 
-	//add user to database
-	db, err := config.InitDB()
-	if err != nil {
-		log.Fatal("Cannot connect to Database", err)
-	}
-	defer db.Close()
+		w.Header().Set("Access-Control-Allow-Origin", "*")
+		w.Header().Set("content-type", "application/json")
+		w.Write(res)
 
-	sqlStmt := `
-    	INSERT INTO users (username, password, name)
-    	VALUES($1, $2, $3);`
-	_, err = db.Exec(sqlStmt, usr, pwd, name)
-	if err != nil {
-		log.Fatal(err)
-		return
+		if vld.Usr != "ok" || vld.Pwd != "ok" || vld.Name != "ok" {
+			return
+		}
+
+		//encrypt password
+		//encryptedPwd := sha256.Sum256([]byte(pwd))
+		//pwd = string(encryptedPwd[:])
+
+		//add user to database
+		db, err := config.InitDB()
+		if err != nil {
+			log.Println("Cannot connect to Database", err)
+		}
+		defer db.Close()
+
+		sqlStmt := `
+    	    INSERT INTO users (username, password, name)
+    	    VALUES($1, $2, $3);`
+		_, err = db.Exec(sqlStmt, usr, pwd, name)
+		if err != nil {
+			log.Println(err)
+			return
+		}
+		fmt.Println("ok")
 	}
 }
