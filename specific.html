@@ -90,35 +90,20 @@
                         <div class="w3-row w3-large">
                             <div class="w3-col s6">
                                 <p><i class="fa fa-fw fa-male"></i> Max people: 4</p>
-                                <p><i class="fa fa-fw fa-bath"></i> Bathrooms: 2</p>
-                                <p><i class="fa fa-fw fa-bed"></i> Bedrooms: 1</p>
+                                <p><i class="fa fa-fw fa-bath"></i> Bathroom: Exist</p>
+                                
                             </div>
  
                         </div>
                         <hr>
 
-                        <h4><strong>Amenities</strong></h4>
-                        <div class="w3-row w3-large">
-                            <div class="w3-col s6">
-                                <p><i class="fa fa-fw fa-shower"></i> Shower</p>
-                                <p><i class="fa fa-fw fa-wifi"></i> WiFi</p>
-                                <p><i class="fa fa-fw fa-tv"></i> TV</p>
-                            </div>
-                            <div class="w3-col s6">
-                                <p><i class="fa fa-fw fa-cutlery"></i> Kitchen</p>
-                                <p><i class="fa fa-fw fa-thermometer"></i> Heating</p>
-                                <p><i class="fa fa-fw fa-wheelchair"></i> Accessible</p>
-                            </div>
-                        </div>
-                        <hr>
+                   
 
                         <h4><strong>Extra Info</strong></h4>
                         <p>Our apartment is really clean and we like to keep it that way. Enjoy the lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                         <p>We accept: <i class="fa fa-credit-card w3-large"></i> <i class="fa fa-cc-mastercard w3-large"></i> <i class="fa fa-cc-amex w3-large"></i> <i class="fa fa-cc-cc-visa w3-large"></i><i class="fa fa-cc-paypal w3-large"></i></p>
                         <hr>
 
-                        <h4><strong>Rules</strong></h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                     </div>
                     <hr>
 
@@ -179,28 +164,50 @@
             </div>
         </div >
         <div class="rightcolumn" >
-        <div class="card" >
-        <p style="padding: 8px;" > Name:</p >
-        <p style="padding: 8px;" > Tel:</p >
+        
+          <div class="card" >
+              <div id="rating">
+                  <input type="radio" id="star5" name="rating" value="5" />
+                  <label class="full" for="star5" title="Awesome - 5 stars"></label>
+
+                  <input type="radio" id="star4" name="rating" value="4" />
+                  <label class="full" for="star4" title="Pretty good - 4 stars"></label>
+
+                  <input type="radio" id="star3" name="rating" value="3" />
+                  <label class="full" for="star3" title="Meh - 3 stars"></label>
+
+                  <input type="radio" id="star2" name="rating" value="2" />
+                  <label class="full" for="star2" title="Kinda bad - 2 stars"></label>
+
+                  <input type="radio" id="star1" name="rating" value="1" />
+                  <label class="full" for="star1" title="Sucks big time - 1 star"></label>
+              </div>
+              <script>
+                  function calcRate(r) {
+                      const f = ~~r,
+                      id = 'star' + f + (r % f ? 'half' : '')
+                      id && (document.getElementById(id).checked = !0)
+                  }
+              </script>
+            
+          </div >
+            <div class="card" >
+                <form onsubmit="return getComment()">
+                    <textarea class="rate" style="width:100%; height:100px; overflow:auto;" placeholder="Please give sincere comment..." > </textarea >
+                    <button type="submit" class="submitbtn" style="display:block; margin:auto;">Submit</button>
+                </form>
+            </div >
+            <script>
+                function getComment() {
+                    let commentData = document.getElementsByClassName("rate");
+                    let commentObject = {
+                        Comment: commentData,
+                    }
+                }
+            </script>
 
         </div >
-        <div class="card" >
-        <!-- Add icon library -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
-        <div style="margin-left:35%;" >
-        <span class="fa fa-star checked" > </span >
-        <span class="fa fa-star checked" > </span >
-        <span class="fa fa-star checked" > </span >
-        <span class="fa fa-star" > </span >
-        <span class="fa fa-star" > </span >
-        </div >
-        </div >
-        <div class="card" >
-        <textarea style="width:100%; height:100px; overflow:auto;" placeholder="Please give sincere comment..." > </textarea >
-        </div >
-
-        </div >
-        </div >
+        </div>
 
         <div class="footer" >
         <h2 > made by GET HIGH TEAM</h2 >
