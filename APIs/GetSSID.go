@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func getSSID(r *http.Request) string {
+func GetSSID(r *http.Request) string {
 	cookie, err := r.Cookie("SSID")
 
 	if err == http.ErrNoCookie {

@@ -7,7 +7,7 @@ import (
 )
 
 func getUser(w http.ResponseWriter, r *http.Request) {
-	ssid := getSSID(r)
+	ssid := GetSSID(r)
 
 	db, err := config.InitDB()
 	if err != nil {
