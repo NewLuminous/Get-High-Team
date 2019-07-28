@@ -29,7 +29,7 @@
 
 <div class="topnav">
   <a href="index.html">Home</a>
-  <a href="newpost.html">New post</a>
+  <a onclick="goToNewPost()">New post</a>
   <a href="signin.html" id="signin" style="float:right;">Sign in</a>
   <a href="signup.html" id="signup" style="float:right;">Sign up</a>
   <a href="index.html" id="signout" style="float:right; display:none;" onclick="requestSignOut()">Sign out</a>
@@ -169,7 +169,14 @@
       requestData(serverURL + "signout", null, responseSignOut, "GET");
     }
     
-    function responseSignOut(responseText) {}
+    function responseSignOut(responseText) {
+      checkSignIn();
+    }
+    
+    function goToNewPost() {
+      let welcome = document.getElementById("welcome");
+      if (welcome.style.display == "none") return; else location.href = "newpost.html";
+    }
   </script>
 </body>
 </html>
