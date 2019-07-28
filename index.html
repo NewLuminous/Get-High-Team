@@ -21,7 +21,8 @@
         .mySlides {display: none}
         </style>
 </head>
-<body onload="checkSignIn(); checkPageNum()">
+
+<body onload="checkSignIn(); checkPageNum();">
   <div class="header">
   <h1>Hostel</h1>
   <h2>Rent</h2>
@@ -30,8 +31,8 @@
 <div class="topnav">
   <a href="index.html">Home</a>
   <a onclick="goToNewPost()">New post</a>
-  <a href="signin.html" id="signin" style="float:right;">Sign in</a>
-  <a href="signup.html" id="signup" style="float:right;">Sign up</a>
+  <a href="signin.html" id="signin" style="float:right; display:none;">Sign in</a>
+  <a href="signup.html" id="signup" style="float:right; display:none;">Sign up</a>
   <a href="index.html" id="signout" style="float:right; display:none;" onclick="requestSignOut()">Sign out</a>
   <a id="welcome" style="float:right; display:none;">Welcome </a>
 </div>
@@ -39,84 +40,96 @@
 <div class="row">
   <div class="leftcolumn">
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+
+      <div class="fakeimg" style="height:200px; background-image:url(https://media.cntraveler.com/photos/53da60a46dec627b149e66f4/4:3/w_420,c_limit/hilton-moorea-lagoon-resort-spa-moorea-french-poly--110160-1.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://assets.traveltriangle.com/blog/wp-content/uploads/2015/09/palazzo-versace-queensland.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://irisholidays.com/keralatourism/wp-content/uploads/2013/07/mountain-club-resort-munnar.gif)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://www.wonderslist.com/wp-content/uploads/2012/09/roman-baths.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://i.ytimg.com/vi/BfdCifGDfSI/hqdefault.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://top10hoian.net/wp-content/uploads/2018/10/26.Top-10-Villa-%C4%91%E1%BA%B9p-nh%E1%BA%A5t-t%E1%BA%A1i-H%E1%BB%99i-An.1.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(http://thuevilla.com/wp-content/uploads/2018/03/d25cb572af0b43551a1a.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://clickladi.cdn.vccloud.vn/wp-content/uploads/2019/07/G2-26.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://r-ec.bstatic.com/images/hotel/max1280x900/525/52506990.jpg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
     </div>
     <div class="hostelPreview">
-      <div class="fakeimg" style="height:200px;">Image</div>
-      <a href="#">TITLE HEADING</a>
+      <div class="fakeimg" style="height:200px; background-image:url(https://travel.home.sndimg.com/content/dam/images/travel/fullset/2015/01/09ET/britains-top-castles-windsor-bershire-england.jpg.rend.hgtvcom.581.436.suffix/1491581062554.jpeg)"></div>
+      <a onclick="goToSpec(this)"></a>
       <h5></h5>
-      <p>Some text..</p>
-      <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      <p>Title description, Dec 7, 2017</p>
+      <p></p>
+      <p></p>
+      <p></p>
+      <p style="display:none;"></p>
+
     </div>
     <div class="card">
       <div class="pagination">
@@ -170,13 +183,18 @@
     }
     
     function responseSignOut(responseText) {
-
       checkSignIn();
     }
     
     function goToNewPost() {
       let welcome = document.getElementById("welcome");
-      if (welcome.style.display == "none") return; else location.href = "newpost.html";
+
+      location.href = (welcome.style.display == "none") ? "signin.html" : "newpost.html";
+    }
+    
+    function goToSpec(ele) {
+      let contents = ele.parentElement.getElementsByTagName("*");
+      location.href = "specific.html" + "?id=" + contents[6].innerHTML;
     }
   </script>
 </body>

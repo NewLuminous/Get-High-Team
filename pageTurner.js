@@ -32,13 +32,14 @@ function getFirstPageNum() {
       currentPage.id = "";
       return parseInt(currentPage.innerHTML);
     }
-/*
+
 function getInfo(info) {
   let posLeft = location.href.indexOf(info);
   if (posLeft < 0) return "1";
   let posRight = location.href.indexOf("&", posLeft);
-  if (posRight < 0) return "" 
-}*/
+  if (posRight < 0) return location.href.substring(posLeft + info.length + 1);
+  return location.href.subtring(posLeft + info.length + 1, posRight);
+}
     
 function activatePage(num) {
   if (num == 0) num = getCurrentPage();
@@ -49,10 +50,9 @@ function activatePage(num) {
     From: (num - 1) * 10,
     To: num * 10 - 1
   };
-  //let pageRequest = getInfo("page");
-  //let pos = location.href.indexOf("page");
-  //let pageRequest = parseInt(location.href.substr(pos + 5,));
-  //location.href = location.pathname + "?page=" + num; 
+  let pageRequest = getInfo("page");
+  let oldNum = parseInt(pageRequest);
+  if (oldNum != num) location.href = location.pathname + "?page=" + num; 
   requestData(serverURL + "APIs/getIndexPost", JSON.stringify(pageObj), responsePage);
 }
 
@@ -60,12 +60,14 @@ function responsePage(responseText) {
   let hostels = JSON.parse(responseText);
   for (let i = 0; i < hostels.Data.length; ++i) {
     let contents = previews[i].getElementsByTagName("*");
-    contents[0].innerHTML = hostels.Data[i].Image;
+    //contents[0].innerHTML = hostels.Data[i].Image;
     contents[1].innerHTML = hostels.Data[i].Title;
     contents[2].innerHTML = hostels.Data[i].Price + " VND/month";
     contents[3].innerHTML = "Area: " + hostels.Data[i].Area + " m2";
     contents[4].innerHTML = "Address: " + hostels.Data[i].Address;
     contents[5].innerHTML = "Last update: " + hostels.Data[i].Date;
+    //contents[6].innerHTML = hostels.Data[i].Id;
+    contents[6].innerHTML = 7;
     previews[i].style.display = "block";
   }
   for (let i = hostels.Data.length; i <= 10; ++i) {
@@ -87,7 +89,9 @@ function responsePage(responseText) {
       else if (maxPageNum < lastPageNum) {
         for (let i = pages.length - 2; i >= 1; --i) pages[i].innerHTML = maxPageNum - pages.length + 2 + i;
       }
-      activatePage(0);
+      let pageRequest = getInfo("page");
+      let oldNum = parseInt(pageRequest);
+      activatePage(oldNum);
   }
     
   function responsePost(responseText) {
