@@ -160,12 +160,6 @@ input[type=submit] {
         clear: both;
     }
 
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
-
 
 
 /* Add a card effect for articles */
