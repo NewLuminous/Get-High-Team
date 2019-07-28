@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -26,87 +26,119 @@
     <div class="row">
         <div class="leftcolumn">
             <div class="card">
-                <form action="/action_page.php">
+                <form method="PUT" action="" onsubmit="return getInfo()">
                     <label for="fname">First Name</label>
-                    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+                    <input class="info" type="text" id="fname" name="firstname" placeholder="Your name..">
 
                     <label for="lname">Last Name</label>
-                    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+                    <input class="info" type="text" id="lname" name="lastname" placeholder="Your last name..">
 
                     <label for="owneraddress">Owner's Address</label>
-                    <input type="text" id="owneraddress" name="owneraddress" placeholder="Address..">
+                    <input class="info" type="text" id="owneraddress" name="owneraddress" placeholder="Address..">
 
                     <label for="city">Hostel City</label>
-                    <select id="city" name="city">
+                    <select class="info" id="city" name="city">
                         <option value="hanoi">Hanoi</option>
                         <option value="danang">Da Nang</option>
                         <option value="hochiminh">Ho Chi Minh</option>
                     </select>
 
                     <label for="district">Hostel District</label>
-                    <select id="district" name="district">
+                    <select class="info" id="district" name="district">
                     </select>
 
                     <label for="street">Hostel Street</label>
-                    <select id="street" name="street">
+                    <select class="info" id="street" name="street">
                     </select>
 
                     <label for="area">Hostel Area</label>
-                    <input type="number" id="area" name="area" placeholder="Area..." />
+                    <input class="info" type="number" id="area" name="area" placeholder="Area..." />
 
                     <label for="maxpeople">Max People</label>
-                    <input type="text" id="maxpeople" name="maxpeople" placeholder="Number of people..." />
+                    <input class="info" type="text" id="maxpeople" name="maxpeople" placeholder="Number of people..." />
 
                     <label class="container">
-                        <input type="checkbox"> Inside Bathroom
+                        <input class="info" type="checkbox"> Inside Bathroom
                         <span class="checkmark"></span>
                     </label>
 
                     <label for="description" style="padding-top:10px; padding-bottom:10px; ">More Description</label>
-                    <textarea id="description" name="description" placeholder="Write something.." style="height:200px; overflow:auto" class="desBox">
+                    <textarea class="info desBox" id="description" name="description" placeholder="Write something.." style="height:200px; overflow:auto">
 
                     </textarea>
 
                     <label style="display:block;">Image 1:</label>
-                    <input type='file' onchange="readURL(this);" />
-                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
+
 
                     <label style="display:block;">Image 2:</label>
-                    <input type='file' onchange="readURL(this);" />
-                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
+
 
                     <label style="display:block;">Image 3:</label>
-                    <input type='file' onchange="readURL(this);" />
-                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
+
 
                     <label style="display:block;">Image 4:</label>
-                    <input type='file' onchange="readURL(this);" />
-                    <img id="blah" src="http://placehold.it/180" alt="your image" />
+                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
+
 
                     <label style="display:block;">Image 5:</label>
-                    <input type='file' onchange="readURL(this);" />
-                    <img id="blah" src="http://placehold.it/180" alt="your image" style="display:block; margin-bottom:10px;" />
+                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
+
 
                     <label for="phone">Phone Number: </label>
-                    <input type="tel" id="phone" name="phone" placeholder="Your phone number...">
+                    <input class="info" type="tel" id="phone" name="phone" placeholder="Your phone number...">
 
                     <label for="ursemail">Email: </label>
-                    <input type="email" id="ursemail" name="ursemail" placeholder="Your email...">
+                    <input class="info" type="email" id="ursemail" name="ursemail" placeholder="Your email...">
 
 
                     <input type="submit" value="Rent your house">
+
+
                 </form>
+
             </div>
             
-            
-            
+
+
         </div>
-        
+
     </div>
 
     <div class="footer">
         <h2>made by GET HIGH TEAM</h2>
     </div>
     <script src="newpost.js"></script>
+    <script>
+        function getInfo() {
+            let infoData = document.getElementsByClassName("info");
+            let infoObj = {
+                Firstname: infoData[0].value,
+                Lastname: infoData[1].value,
+                OwnerAddress: infoData[2].value,
+                City: infoData[3].value,
+                District: infoData[4].value,
+                Street: infoData[5].value,
+                Area: infoData[6].value,
+                maxPeople: infoData[7].value,
+                insideBathroom: infoData[8].checked,
+                Description: infoData[9].value,
+                Image1: infoData[10].files[0],
+                Image2: infoData[11].files[0],
+                Image3: infoData[12].files[0],
+                Image4: infoData[13].files[0],
+                Image5: infoData[14].files[0],
+                phone: infoData[15].value,
+                email: infoData[16].value,
+            
+
+            }
+            
+            return false;
+
+        }
+    </script>
 </body>
 </html>
