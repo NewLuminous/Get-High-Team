@@ -77,6 +77,9 @@
                         <span class="checkmark"></span>
                     </label>
 
+                    <label for="price">Price</label>
+                    <input class="info" type="number" id="price" name="price" placeholder="Price" />
+
                     <label for="description" style="padding-top:10px; padding-bottom:10px; ">More Description</label>
                     <textarea class="info desBox" id="description" name="description" placeholder="Write something.." style="height:200px; overflow:auto">
 
@@ -85,7 +88,7 @@
 
 
 
-                    
+
 
 
                     <label style="display:block;" for="phone">Phone Number: </label>
@@ -135,10 +138,11 @@
                 Area: parseInt(infoData[6].value),
                 MaxPeople: parseInt(infoData[7].value),
                 LiveWithOwner: infoData[8].checked,
-                Description: infoData[9].value,
+                Price: parseInt(infoData[9].value),
+                Description: infoData[10].value,
                 
-                Phone: infoData[10].value,
-                Email: infoData[11].value
+                Phone: infoData[11].value,
+                Email: infoData[12].value
             
 
             }
