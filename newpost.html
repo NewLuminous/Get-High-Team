@@ -164,7 +164,8 @@
 
         function responseInfo(responseText) {
             //alert(responseInfo);
-            location.href = "index.html";
+            let responseObj = JSON.parse(responseText);
+            location.href = "specific.html" + "?id=" + responseObj.PostID;
         }
     </script>
 </body>
