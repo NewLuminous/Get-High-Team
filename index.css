@@ -62,7 +62,6 @@ body {
   padding-left: 20px;
 }
 
-/* Fake image */
 .fakeimg {
   background-color: #aaa;
   width: 25%;
@@ -72,7 +71,7 @@ body {
 }
 
 /* Add a card effect for articles */
-.card {
+.card, .hostelPreview {
   background-color: white;
   padding: 20px;
   margin-top: 20px;
@@ -83,7 +82,13 @@ body {
   clear: both;
 }
 
-select {
+.hostelPreview:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+select, input {
   width: 100%;
   padding: 12px 20px;
   margin: 8px 0;
