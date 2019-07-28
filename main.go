@@ -7,6 +7,7 @@ import (
 	"github.com/Get-High-Team/signin"
 	"github.com/Get-High-Team/signout"
 	"github.com/Get-High-Team/signup"
+	"github.com/Get-High-Team/newpost"
 	"log"
 	"net/http"
 	"strings"
@@ -14,17 +15,18 @@ import (
 )
 
 func customHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path == "/signup" {
+	switch r.URL.Path {
+	case "/signup":
 		signup.Handler(w, r)
 		return
-	}
-	if r.URL.Path == "/signin" {
+	case "/signin":
 		signin.Handler(w, r)
 		return
-	}
-	if r.URL.Path == "/signout" {
-
+	case "/signout":
 		signout.Handler(w, r)
+		return
+	case "/newpost":
+		newpost.Handler(w, r)
 		return
 	}
 

@@ -73,41 +73,32 @@
                     <input class="info" type="text" id="maxpeople" name="maxpeople" placeholder="Number of people..." />
 
                     <label class="container">
-                        <input class="info" type="checkbox"> Inside Bathroom
+                        <input class="info" type="checkbox"> Live With Owner
                         <span class="checkmark"></span>
                     </label>
+
+                    <label for="price">Price</label>
+                    <input class="info" type="number" id="price" name="price" placeholder="Price" />
 
                     <label for="description" style="padding-top:10px; padding-bottom:10px; ">More Description</label>
                     <textarea class="info desBox" id="description" name="description" placeholder="Write something.." style="height:200px; overflow:auto">
 
                     </textarea>
 
-                    <label style="display:block;">Image 1:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
 
 
-                    <label style="display:block;">Image 2:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
 
 
-                    <label style="display:block;">Image 3:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
 
 
-                    <label style="display:block;">Image 4:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
-
-
-                    <label style="display:block;">Image 5:</label>
-                    <input class="info" type='file' accept="image/gif, image/jpeg, image/png" />
-
-
-                    <label for="phone">Phone Number: </label>
+                    <label style="display:block;" for="phone">Phone Number: </label>
                     <input class="info" type="tel" id="phone" name="phone" placeholder="Your phone number...">
 
                     <label for="ursemail">Email: </label>
                     <input class="info" type="email" id="ursemail" name="ursemail" placeholder="Your email...">
 
+                    <label for="title">Title </label>
+                    <input class="info" type="text" id="title" name="title" placeholder="Title...">
 
                     <input type="submit" value="Rent your house">
 
@@ -146,23 +137,27 @@
                 City: infoData[3].value,
                 District: infoData[4].value,
                 Street: infoData[5].value,
-                Area: infoData[6].value,
-                maxPeople: infoData[7].value,
-                insideBathroom: infoData[8].checked,
-                Description: infoData[9].value,
-                Image1: infoData[10].files[0],
-                Image2: infoData[11].files[0],
-                Image3: infoData[12].files[0],
-                Image4: infoData[13].files[0],
-                Image5: infoData[14].files[0],
-                phone: infoData[15].value,
-                email: infoData[16].value,
+                Area: parseInt(infoData[6].value),
+                MaxPeople: parseInt(infoData[7].value),
+                LiveWithOwner: infoData[8].checked,
+                Price: parseInt(infoData[9].value),
+                Description: infoData[10].value,
+                
+                Phone: infoData[11].value,
+                Email: infoData[12].value,
+                Title: infoData[13].value,
+                
             
 
             }
+            requestData(serverURL + "newpost", JSON.stringify(infoObj), responseInfo, "POST");
             
             return false;
 
+        }
+
+        function responseInfo(responseText) {
+            alert(responseInfo);
         }
     </script>
 </body>
