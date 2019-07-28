@@ -1,8 +1,10 @@
 let pages = document.getElementsByClassName("pages");
+let previews = document.getElementsByClassName("hostelPreview");
+let maxPageNum = -1;
   
-    function getFirstPageNum() {
-      return parseInt(pages[1].innerHTML);
-    }
+function getFirstPageNum() {
+  return parseInt(pages[1].innerHTML);
+}
     
     function getLastPageNum() {
       for (let i = pages.length - 2; i >= 1; --i)
@@ -30,16 +32,52 @@ let pages = document.getElementsByClassName("pages");
       currentPage.id = "";
       return parseInt(currentPage.innerHTML);
     }
+/*
+function getInfo(info) {
+  let posLeft = location.href.indexOf(info);
+  if (posLeft < 0) return "1";
+  let posRight = location.href.indexOf("&", posLeft);
+  if (posRight < 0) return "" 
+}*/
     
-    function activatePage(num) {
-      if (num == 0) num = getCurrentPage();
-      leaveCurrentPage();
-      pages[getPageIndex(num)].id = "active";
-      num = getCurrentPage();
-    }
+function activatePage(num) {
+  if (num == 0) num = getCurrentPage();
+  leaveCurrentPage();
+  pages[getPageIndex(num)].id = "active";
+  num = getCurrentPage();
+  let pageObj = {
+    From: (num - 1) * 10,
+    To: num * 10 - 1
+  };
+  //let pageRequest = getInfo("page");
+  //let pos = location.href.indexOf("page");
+  //let pageRequest = parseInt(location.href.substr(pos + 5,));
+  //location.href = location.pathname + "?page=" + num; 
+  requestData(serverURL + "APIs/getIndexPost", JSON.stringify(pageObj), responsePage);
+}
+
+function responsePage(responseText) {
+  let hostels = JSON.parse(responseText);
+  for (let i = 0; i < hostels.Data.length; ++i) {
+    let contents = previews[i].getElementsByTagName("*");
+    contents[0].innerHTML = hostels.Data[i].Image;
+    contents[1].innerHTML = hostels.Data[i].Title;
+    contents[2].innerHTML = hostels.Data[i].Price + " VND/month";
+    contents[3].innerHTML = "Area: " + hostels.Data[i].Area + " m2";
+    contents[4].innerHTML = "Address: " + hostels.Data[i].Address;
+    contents[5].innerHTML = "Last update: " + hostels.Data[i].Date;
+    previews[i].style.display = "block";
+  }
+  for (let i = hostels.Data.length; i <= 10; ++i) {
+    previews[i].style.display = "none";
+  }
+}
   
     function checkPageNum() {
-      const maxPageNum = 20;
+      requestData(serverURL + "APIs?id=getNumberOfPosts", null, responsePost, "GET");
+    }
+    
+  function updatePage() {
       let lastPageNum = getLastPageNum();
       if (maxPageNum < pages.length - 2)  {
         for (let i = 1; i <= pages.length - 2; ++i)
@@ -50,8 +88,14 @@ let pages = document.getElementsByClassName("pages");
         for (let i = pages.length - 2; i >= 1; --i) pages[i].innerHTML = maxPageNum - pages.length + 2 + i;
       }
       activatePage(0);
-      return maxPageNum;
-    }
+  }
+    
+  function responsePost(responseText) {
+    let x = parseInt(JSON.parse(responseText).Data);
+    maxPageNum = parseInt(x / 10);
+    if (x % 10 > 0) ++maxPageNum;
+    updatePage();
+  }
   
     function changePage(pageEle) {
       checkPageNum();
@@ -59,7 +103,7 @@ let pages = document.getElementsByClassName("pages");
     }
     
     function goToPrevPage() {
-      let maxPageNum = checkPageNum();
+      checkPageNum();
       let currentPageNum = getCurrentPage();
       if (currentPageNum == 1) return;
       let firstPageNum = getFirstPageNum();
@@ -70,7 +114,7 @@ let pages = document.getElementsByClassName("pages");
     }
     
     function goToNextPage() {
-      let maxPageNum = checkPageNum();
+      checkPageNum();
       let currentPageNum = getCurrentPage();
       if (currentPageNum == maxPageNum) return;
       let lastPageNum = getLastPageNum();
